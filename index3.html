@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>62 Ways to Make Money with Claude AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #8A6B2A;
+    --navy: #0D1B2A;
+    --navy-mid: #152338;
+    --navy-light: #1E3150;
+    --navy-card: #182b40;
+    --cream: #F5EDD6;
+    --cream-dim: #C4B48A;
+    --text: #EEE8D5;
+    --text-muted: #8FA3BC;
+    --beginner: #4ECDC4;
+    --intermediate: #F7B731;
+    --advanced: #FF6B6B;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, #1a3a5c55 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 90% 80%, #C9A84C08 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Header */
+  .header { text-align: center; margin-bottom: 52px; }
+  .header-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 20px;
+    padding: 5px 14px; border: 1px solid #C9A84C30;
+    border-radius: 20px; background: #C9A84C0A;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    color: var(--cream);
+  }
+  .header h1 span { color: var(--gold); }
+  .header-sub {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* Stats row */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .stat {
+    background: var(--navy-card);
+    border: 1px solid #ffffff0d;
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    transition: border-color .2s;
+  }
+  .stat:hover { border-color: #C9A84C30; }
+  .stat-n {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .stat-l { font-size: 11px; color: var(--text-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* Controls */
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; align-items: center; }
+
+  .search-wrap {
+    flex: 1; min-width: 220px;
+    position: relative;
+  }
+  .search-wrap svg {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); width: 16px; height: 16px;
+  }
+  .search-wrap input {
+    width: 100%;
+    background: var(--navy-card);
+    border: 1px solid #ffffff12;
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px 10px 38px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-wrap input:focus { border-color: var(--gold-dim); }
+  .search-wrap input::placeholder { color: var(--text-muted); }
+
+  .level-filter {
+    display: flex;
+    background: var(--navy-card);
+    border: 1px solid #ffffff10;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .lf-btn {
+    padding: 9px 16px;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .2s;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .lf-btn.active-b { background: #4ECDC415; color: var(--beginner); }
+  .lf-btn.active-i { background: #F7B73115; color: var(--intermediate); }
+  .lf-btn.active-a { background: #FF6B6B15; color: var(--advanced); }
+  .lf-btn.active-all { background: #C9A84C15; color: var(--gold); }
+  .lf-btn:hover:not(.active-b):not(.active-i):not(.active-a):not(.active-all) { color: var(--text); background: #ffffff08; }
+
+  /* Category nav */
+  .cat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .cat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid #ffffff12;
+    background: var(--navy-card);
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .cat-btn:hover { border-color: #ffffff25; color: var(--text); }
+  .cat-btn .cb-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    transition: transform .2s;
+  }
+  .cat-btn.active { color: var(--cream); border-color: currentColor; }
+  .cat-btn.active .cb-dot { transform: scale(1.3); }
+  .cat-btn .cb-count {
+    font-size: 11px;
+    background: #ffffff12;
+    padding: 1px 6px;
+    border-radius: 8px;
+    color: var(--text-muted);
+  }
+  .cat-btn.active .cb-count { background: #ffffff22; color: var(--cream); }
+
+  /* Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    background: var(--navy-card);
+    border: 1px solid #ffffff0d;
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    cursor: pointer;
+    transition: all .22s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    opacity: 0;
+    transition: opacity .22s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: #ffffff1a; }
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .badge-b { background: #4ECDC418; color: var(--beginner); }
+  .badge-i { background: #F7B73118; color: var(--intermediate); }
+  .badge-a { background: #FF6B6B18; color: var(--advanced); }
+
+  .card-cat-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* empty state */
+  .empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 64px 24px;
+    color: var(--text-muted);
+  }
+  .empty-icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-t { font-family: 'Syne', sans-serif; font-size: 18px; color: var(--cream); margin-bottom: 6px; }
+
+  /* result count */
+  .result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .result-count strong { color: var(--gold); }
+
+  .clear-btn {
+    background: none;
+    border: 1px solid #ffffff15;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .clear-btn:hover { color: var(--text); border-color: #ffffff25; }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+  .footer a { color: var(--gold-dim); text-decoration: none; }
+  .footer a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 28px; }
+  }
+  @media (max-width: 400px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card { animation: fadeUp .35s ease both; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="header-eyebrow">&#9670; Monetisation Guide</div>
+    <h1>62 Ways to Make<br>Money with <span>Claude AI</span></h1>
+    <p class="header-sub">Explore every income stream — from beginner freelancing to advanced automation businesses.</p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="search" type="text" placeholder="Search ideas…" oninput="render()">
+    </div>
+    <div class="level-filter">
+      <button class="lf-btn active-all" id="lf-all" onclick="setLevel('all')">All levels</button>
+      <button class="lf-btn" id="lf-b" onclick="setLevel('b')">Beginner</button>
+      <button class="lf-btn" id="lf-i" onclick="setLevel('i')">Intermediate</button>
+      <button class="lf-btn" id="lf-a" onclick="setLevel('a')">Advanced</button>
+    </div>
+  </div>
+
+  <nav class="cat-nav" id="cat-nav"></nav>
+
+  <div class="result-row">
+    <span id="result-label"></span>
+    <button class="clear-btn" id="clear-btn" onclick="clearFilters()" style="display:none">Clear filters</button>
+  </div>
+
+  <div class="cards-grid" id="grid"></div>
+
+  <footer class="footer">Powered by Claude AI &nbsp;·&nbsp; <a href="https://claude.ai" target="_blank">claude.ai</a></footer>
+</div>
+
+<script>
+const CATS = [
+  { id:'all',     label:'All',         icon:'✦', color:'#C9A84C' },
+  { id:'freelance',label:'Freelancing', icon:'💼', color:'#7B8FFF' },
+  { id:'content', label:'Content',      icon:'✍️', color:'#4ECDC4' },
+  { id:'products',label:'Products',     icon:'📦', color:'#F7B731' },
+  { id:'agency',  label:'Agency',       icon:'🏢', color:'#D97DE0' },
+  { id:'education',label:'Education',   icon:'🎓', color:'#5AB8FF' },
+  { id:'automation',label:'Automation', icon:'🤖', color:'#6EE7B7' },
+];
+
+const ITEMS = [
+  {t:'Copywriting service',d:'Write ads, emails & landing pages for businesses',c:'freelance',lvl:'b'},
+  {t:'Resume writing',d:'Craft standout resumes and cover letters',c:'freelance',lvl:'b'},
+  {t:'Blog ghostwriting',d:'Write long-form blog posts for brands and founders',c:'freelance',lvl:'b'},
+  {t:'Social media content',d:'Manage content calendars for businesses',c:'content',lvl:'b'},
+  {t:'Email newsletters',d:'Write and monetise paid newsletters',c:'content',lvl:'b'},
+  {t:'YouTube scripts',d:'Script engaging video content for creators',c:'freelance',lvl:'b'},
+  {t:'Podcast show notes',d:'Transcribe and summarise episodes for creators',c:'freelance',lvl:'b'},
+  {t:'SEO content writing',d:'Create keyword-optimised articles for websites',c:'content',lvl:'b'},
+  {t:'Product descriptions',d:'Write compelling copy for e-commerce stores',c:'freelance',lvl:'b'},
+  {t:'Grant writing',d:'Help nonprofits and businesses apply for grants',c:'freelance',lvl:'i'},
+  {t:'Technical writing',d:'Document APIs, manuals and help centres',c:'freelance',lvl:'i'},
+  {t:'Proofreading service',d:'Edit and polish clients\' written content',c:'freelance',lvl:'b'},
+  {t:'Translation + localisation',d:'Translate and culturally adapt content',c:'freelance',lvl:'i'},
+  {t:'Scriptwriting',d:'Write scripts for ads, explainer videos, films',c:'freelance',lvl:'i'},
+  {t:'Cold email service',d:'Write outreach sequences for sales teams',c:'freelance',lvl:'b'},
+  {t:'Prompt engineering',d:'Build and sell expert prompts for specific use cases',c:'products',lvl:'i'},
+  {t:'Prompt packs',d:'Bundle niche prompts and sell on Gumroad / Etsy',c:'products',lvl:'b'},
+  {t:'AI templates',d:'Sell ready-made Claude workflow templates',c:'products',lvl:'b'},
+  {t:'Custom AI tools',d:'Build Claude-powered mini tools for niches',c:'products',lvl:'i'},
+  {t:'Ebooks & guides',d:'Write and self-publish niche digital books',c:'products',lvl:'b'},
+  {t:'Online courses',d:'Create courses teaching a skill or topic',c:'education',lvl:'i'},
+  {t:'Notion templates',d:'Package AI-assisted productivity systems to sell',c:'products',lvl:'b'},
+  {t:'SaaS micro-tool',d:'Build a simple Claude-powered web app',c:'products',lvl:'a'},
+  {t:'Chrome extension',d:'Create browser tools powered by Claude API',c:'products',lvl:'a'},
+  {t:'Content agency',d:'Hire writers, use Claude to scale and deliver faster',c:'agency',lvl:'i'},
+  {t:'AI marketing agency',d:'Offer AI-assisted marketing services to SMEs',c:'agency',lvl:'i'},
+  {t:'Copywriting agency',d:'Run a boutique agency with Claude as the backbone',c:'agency',lvl:'i'},
+  {t:'Social media agency',d:'Manage multiple brand accounts with Claude',c:'agency',lvl:'b'},
+  {t:'AI consulting',d:'Advise businesses on integrating AI into workflows',c:'agency',lvl:'a'},
+  {t:'Chatbot building',d:'Build and sell Claude-powered customer service bots',c:'automation',lvl:'i'},
+  {t:'Business automation',d:'Automate repetitive tasks for clients',c:'automation',lvl:'i'},
+  {t:'Lead gen automation',d:'Build AI pipelines that qualify leads for sales teams',c:'automation',lvl:'a'},
+  {t:'AI research assistant',d:'Offer deep research services to executives',c:'freelance',lvl:'i'},
+  {t:'Market research reports',d:'Produce in-depth niche research documents',c:'freelance',lvl:'i'},
+  {t:'Competitor analysis',d:'Deliver strategic competitor intel for businesses',c:'freelance',lvl:'i'},
+  {t:'Teaching Claude skills',d:'Run workshops or YouTube channel on using Claude',c:'education',lvl:'b'},
+  {t:'YouTube channel',d:'Build a niche channel with Claude-assisted scripts',c:'content',lvl:'i'},
+  {t:'Newsletter business',d:'Grow and monetise an AI-assisted newsletter',c:'content',lvl:'i'},
+  {t:'Substack publication',d:'Write and sell premium long-form niche content',c:'content',lvl:'b'},
+  {t:'Twitter / X growth',d:'Offer tweet-writing and growth services',c:'freelance',lvl:'b'},
+  {t:'LinkedIn content',d:'Write thought-leadership posts for executives',c:'freelance',lvl:'b'},
+  {t:'Affiliate content site',d:'Build SEO blogs that earn affiliate commissions',c:'content',lvl:'i'},
+  {t:'Niche info product',d:'Research and package a specific knowledge product',c:'products',lvl:'b'},
+  {t:'Student tutoring',d:'Tutor students using Claude to generate explanations',c:'education',lvl:'b'},
+  {t:'Online tutoring platform',d:'Build a micro tutoring service for a niche subject',c:'education',lvl:'i'},
+  {t:'Study guides',d:'Create and sell exam prep materials',c:'education',lvl:'b'},
+  {t:'Business plan writing',d:'Help entrepreneurs write investor-ready business plans',c:'freelance',lvl:'i'},
+  {t:'Pitch deck writing',d:'Script and structure startup pitch decks',c:'freelance',lvl:'i'},
+  {t:'HR document drafting',d:'Write job descriptions, policies and offer letters',c:'freelance',lvl:'b'},
+  {t:'Legal document drafts',d:'Draft contracts and legal templates (non-legal advice)',c:'freelance',lvl:'i'},
+  {t:'Real estate listings',d:'Write property descriptions for agents',c:'freelance',lvl:'b'},
+  {t:'Menu & hospitality copy',d:'Write menus, welcome letters and F&B content',c:'freelance',lvl:'b'},
+  {t:'Event planning content',d:'Write proposals, schedules and comms for events',c:'freelance',lvl:'b'},
+  {t:'UX writing service',d:'Write microcopy and onboarding flows for apps',c:'freelance',lvl:'i'},
+  {t:'Children\'s book writing',d:'Co-write illustrated children\'s stories to publish',c:'products',lvl:'b'},
+  {t:'Fiction writing assist',d:'Help authors outline, draft and edit novels',c:'freelance',lvl:'b'},
+  {t:'Academic editing',d:'Edit and structure papers and dissertations',c:'freelance',lvl:'i'},
+  {t:'Claude API service',d:'Resell Claude API capabilities as a wrapped service',c:'automation',lvl:'a'},
+  {t:'Niche directory site',d:'Build a curated niche directory with AI-assisted content',c:'products',lvl:'i'},
+  {t:'AI art prompts',d:'Sell prompt packs for Midjourney alongside Claude',c:'products',lvl:'b'},
+  {t:'Personal branding',d:'Help professionals build their online personal brand',c:'freelance',lvl:'i'},
+  {t:'Reputation management',d:'Monitor and craft responses for brand mentions',c:'agency',lvl:'i'},
+  {t:'Customer feedback analysis',d:'Analyse reviews and surveys to surface insights',c:'automation',lvl:'i'},
+];
+
+const LVL_LABEL = {b:'Beginner', i:'Intermediate', a:'Advanced'};
+const LVL_CLASS = {b:'badge-b', i:'badge-i', a:'badge-a'};
+
+let activecat = 'all';
+let activelvl = 'all';
+
+function getCat(id) { return CATS.find(c => c.id === id) || CATS[0]; }
+
+function setLevel(lvl) {
+  activelvl = lvl;
+  document.querySelectorAll('.lf-btn').forEach(b => {
+    b.className = 'lf-btn';
+    if (b.id === 'lf-' + lvl) {
+      b.className = lvl === 'all' ? 'lf-btn active-all' : `lf-btn active-${lvl}`;
+    }
+  });
+  render();
+}
+
+function setCategory(id) {
+  activecat = id;
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === id);
+  });
+  render();
+}
+
+function clearFilters() {
+  document.getElementById('search').value = '';
+  activelvl = 'all';
+  activecat = 'all';
+  document.querySelectorAll('.lf-btn').forEach(b => { b.className = 'lf-btn'; });
+  document.getElementById('lf-all').className = 'lf-btn active-all';
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+  render();
+}
+
+function filtered() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  return ITEMS.filter(it => {
+    const matchQ = !q || it.t.toLowerCase().includes(q) || it.d.toLowerCase().includes(q);
+    const matchC = activecat === 'all' || it.c === activecat;
+    const matchL = activelvl === 'all' || it.lvl === activelvl;
+    return matchQ && matchC && matchL;
+  });
+}
+
+function render() {
+  const list = filtered();
+  const q = document.getElementById('search').value.trim();
+  const hasFilter = q || activecat !== 'all' || activelvl !== 'all';
+
+  document.getElementById('clear-btn').style.display = hasFilter ? '' : 'none';
+  document.getElementById('result-label').innerHTML =
+    `<strong>${list.length}</strong> idea${list.length !== 1 ? 's' : ''}${hasFilter ? ' found' : ' total'}`;
+
+  // stats
+  const b = list.filter(i => i.lvl === 'b').length;
+  const im = list.filter(i => i.lvl === 'i').length;
+  const a = list.filter(i => i.lvl === 'a').length;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="stat-n">${list.length}</div><div class="stat-l">Showing</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--beginner)">${b}</div><div class="stat-l">Beginner</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--intermediate)">${im}</div><div class="stat-l">Intermediate</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--advanced)">${a}</div><div class="stat-l">Advanced</div></div>
+  `;
+
+  if (!list.length) {
+    document.getElementById('grid').innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-t">No results found</div>
+        <div>Try a different search or clear your filters.</div>
+      </div>`;
+    return;
+  }
+
+  document.getElementById('grid').innerHTML = list.map((it, i) => {
+    const cat = getCat(it.c);
+    return `
+      <div class="card" style="animation-delay:${Math.min(i * 0.03, 0.5)}s">
+        <div class="card-icon" style="background:${cat.color}18; color:${cat.color};">${cat.icon}</div>
+        <div class="card-title">${it.t}</div>
+        <div class="card-desc">${it.d}</div>
+        <div class="card-footer">
+          <span class="badge ${LVL_CLASS[it.lvl]}">${LVL_LABEL[it.lvl]}</span>
+          <span class="card-cat-dot" style="background:${cat.color};opacity:.7"></span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function buildCatNav() {
+  const nav = document.getElementById('cat-nav');
+  // count per category
+  const counts = {};
+  CATS.forEach(c => { counts[c.id] = c.id === 'all' ? ITEMS.length : ITEMS.filter(i => i.c === c.id).length; });
+
+  nav.innerHTML = CATS.map(c => `
+    <button class="cat-btn ${c.id === 'all' ? 'active' : ''}" data-cat="${c.id}" onclick="setCategory('${c.id}')"
+      style="${c.id !== 'all' ? `--acc:${c.color}` : ''}; ${c.id === activecat && c.id !== 'all' ? `color:${c.color}; border-color:${c.color}` : ''}">
+      <span class="cb-dot" style="background:${c.id === 'all' ? 'var(--gold)' : c.color}"></span>
+      ${c.label}
+      <span class="cb-count">${counts[c.id]}</span>
+    </button>
+  `).join('');
+}
+
+buildCatNav();
+render();
+</script>
+</body>
+</html>
